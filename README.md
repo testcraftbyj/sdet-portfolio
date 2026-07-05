@@ -18,12 +18,19 @@ Test suites written with pytest:
 - `test_calculator.py` — unit tests for a calculator module
 - `test_results.py` — test suite for results handling
 
+### `playwright-project-1/`
+End-to-end Playwright automation suite using the Page Object Model (POM), built against [saucedemo.com](https://www.saucedemo.com/). Covers a full user journey:
+- `pages/` — page objects for Login, Inventory, Cart, and Checkout
+- `tests/` — independent tests for each stage: login, add-to-cart, cart verification, and full checkout flow
+- `conftest.py` — shared fixture configuring Playwright's test-id attribute to match the site's `data-test` convention
+
 ## Coming next
-- Selenium/Playwright Page Object Model automation suite
+- Negative-flow testing (e.g., locked-out user login)
+- Selenium automation suite, for comparison against Playwright
 - AI-powered test scenario generator (LLM-assisted test case generation)
 
 ## Tech stack
-Python, pytest, Selenium, Playwright (in progress)
+Python, pytest, Playwright, Selenium (in progress)
 
 ## About me
 QA professional building toward an SDET / AI Quality Engineering role. Connect on [LinkedIn](https://www.linkedin.com/in/jayalakshmimuthiah).
