@@ -2,8 +2,9 @@ from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
+from pages.checkout_page import CheckoutPage
 
-def test_cart_page(page:Page) -> None:
+def test_checkout_flow(page:Page) -> None:
     page.goto("https://www.saucedemo.com/")
 
     login_page = LoginPage(page)
@@ -19,4 +20,10 @@ def test_cart_page(page:Page) -> None:
 
     cart_page = CartPage(page)
     expect(cart_page.item_name).to_have_text("Sauce Labs Backpack")
-    cart_page.checkout_button.click()
+    cart_page.checkout()
+
+    checkout_page = CheckoutPage(page)
+    checkout_page.fill_checkout_info("TestFN1", "TestLN1", "12345")
+    checkout_page.finish_order()
+
+    expect(checkout_page.confirmation_message).to_have_text("Thank you for your order!")
