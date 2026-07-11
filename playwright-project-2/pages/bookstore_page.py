@@ -4,7 +4,8 @@ from pages.base_page import BasePage
 class BookstorePage(BasePage):
     def __init__(self, page:Page):
         super().__init__(page)
-        self.search_box = page.locator("#searchBox")
+        #self.search_box = page.locator("#searchBox")
+        self.search_box = page.locator("xpath=//input[@id='searchBox']")
         self.book_rows = page.locator("tbody tr")
 
     def search_book(self, book_name: str):
